@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <meta property="og:title" content="Madiha & Azaan | Royal Islamic Wedding Invitation">
+  <meta property="og:description" content="We request the honour of your presence at our wedding ceremony on 12th & 13th Nov 2026.">
+  <meta name="theme-color" content="#2A080C">
+
+  <title>Madiha & Azaan | Royal Wedding Invitation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+  <style>
+    :root {
+      --gold-light: #E5C158;
+      --gold-base: #D4AF37;
+      --gold-dark: #8B6508;
+      --gold-deep: #5A4000;
+      --burgundy-velvet: #2A040A; /* Deep Dark Maroon */
+      --burgundy-light: #5C0A18;
+      --cream-ivory: #FFFDF9; /* Champagne Cream */
+      --text-dark: #2A1D1C;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: #1A0205; /* Deep rich base */
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh;
+      color: var(--text-dark);
+      perspective: 1500px;
+    }
+
+    /* ================= 1. BACKGROUND LAYER 1: ROTATING MANDALA ================= */
+    .royal-mandala-bg {
+      position: fixed; top: 50%; left: 50%;
+      width: 150vmax; height: 150vmax;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g stroke="%23D4AF37" stroke-width="0.3" fill="none" opacity="0.15"><circle cx="50" cy="50" r="40"/><path d="M50,10 L55,45 L90,50 L55,55 L50,90 L45,55 L10,50 L45,45 Z"/><path d="M22,22 L45,45 M78,22 L55,45 M78,78 L55,55 M22,78 L45,55"/></g></svg>');
+      background-size: 300px 300px;
+      animation: spinMandala 160s linear infinite;
+      pointer-events: none; z-index: 1;
+    }
+    @keyframes spinMandala { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+    /* ================= BACKGROUND LAYER 2 & 3: CANVAS (DUST + PETALS) ================= */
+    #sparkles-canvas { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      pointer-events: none; z-index: 2; 
+    }
+    
+    /* FLOATING CONTROLS */
+    #sound-control, #share-control {
+      position: fixed; bottom: 20px; z-index: 10000;
+      background: rgba(255, 253, 249, 0.95); border: 1.5px solid var(--gold-dark); color: var(--gold-deep); 
+      width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      cursor: pointer; font-size: 20px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+    #sound-control { right: 20px; display: none; }
+    #share-control { left: 20px; }
+    #sound-control:hover, #share-control:hover { transform: translateY(-4px) scale(1.1); background: #ffffff; }
+
+    /* ================= DEEP VELVET & GOLDEN LACE DOOR ================= */
+    #gate-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9000;
+      display: flex; pointer-events: none; overflow: hidden;
+    }
+    
+    .door {
+      width: 50%; height: 100%; position: relative; pointer-events: auto;
+      background-color: var(--burgundy-velvet);
+      background-image: 
+        linear-gradient(to right, 
+          rgba(10, 0, 2, 0.85) 0%, rgba(92, 10, 24, 0.9) 20%, 
+          rgba(15, 0, 3, 0.8) 40%, rgba(130, 15, 30, 0.85) 60%, 
+          rgba(10, 0, 2, 0.9) 80%, rgba(0, 0, 0, 0.6) 100%);
+      background-size: 25% 100%; 
+      transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1), filter 2.5s ease;
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.9);
+      z-index: 2;
+    }
+
+    /* Shimmering Gold Jhalar / Lace */
+    .door::after {
+      content: ''; position: absolute; top: 0; width: 16px; height: 100%;
+      background: linear-gradient(to bottom, #8A6A1F 0%, #E5C158 15%, #FFF5D1 30%, #8A6A1F 50%, #E5C158 70%, #FFF5D1 85%, #8A6A1F 100%);
+      box-shadow: 0 0 20px rgba(0,0,0,0.9), inset 0 0 4px rgba(255,255,255,0.9);
+    }
+    #left-door { transform-origin: left top; }
+    #left-door::after { right: 0; border-left: 2px dashed rgba(42, 4, 10, 0.5); }
+    #right-door { transform-origin: right top; }
+    #right-door::after { left: 0; border-right: 2px dashed rgba(42, 4, 10, 0.5); }
+    
+    .door.open-left { transform: scaleX(0.12); filter: drop-shadow(25px 0 30px rgba(0,0,0,1)); }
+    .door.open-right { transform: scaleX(0.12); filter: drop-shadow(-25px 0 30px rgba(0,0,0,1)); }
+
+    /* SEAL */
+    #seal-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 9500; cursor: pointer; pointer-events: auto;
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .seal-circle {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: conic-gradient(from 0deg, #D4AF37, #FFF5D1, #8A6A1F, #D4AF37, #FFF5D1, #8A6A1F, #D4AF37);
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(138,106,31,0.9);
+      border: 6px solid #1A0205;
+      animation: royalGlow 2s infinite alternate; position: relative;
+    }
+    .seal-circle::before {
+      content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+      border-radius: 50%; border: 1.5px dashed rgba(26, 2, 5, 0.6);
+    }
+    .seal-monogram {
+      font-family: 'Playfair Display', serif; font-size: 46px; font-weight: 800; color: #1A0205;
+      text-shadow: 1px 1px 0px rgba(255,255,255,0.7), -1px -1px 0px rgba(138,106,31,0.5);
+    }
+    .seal-text {
+      position: absolute; bottom: -45px; left: 50%; transform: translateX(-50%);
+      width: 250px; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+      color: #E5C158; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,1);
+    }
+    @keyframes royalGlow {
+      0% { transform: scale(1); box-shadow: 0 0 25px rgba(212,175,55,0.3); }
+      100% { transform: scale(1.05); box-shadow: 0 0 70px rgba(212,175,55,0.9); }
+    }
+
+    /* ================= MAIN CONTENT & MUGHAL MEHRAB ================= */
+    .content-wrapper { display: none; width: 100%; max-width: 440px; padding: 15px; perspective: 1500px; z-index: 5; position: relative; }
+    
+    .islamic-card {
+      background: transparent; border: none; position: relative; overflow: visible; 
+      transform-style: preserve-3d; animation: floatingIdle 6s infinite alternate ease-in-out;
+      min-height: 600px; display: grid; perspective: 1500px;
+    }
+
+    .page { 
+      grid-area: 1 / 1; width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none; backface-visibility: hidden;
+      transform-style: preserve-3d; transform: rotateY(90deg); z-index: 2;
+    }
+    .page.active { opacity: 1; pointer-events: auto; transform: rotateY(0deg); }
+
+    /* MUGHAL SCALLOPED ARCH DESIGN (CSS + SVG Seamless Blend) */
+    .mughal-arch-top {
+      width: 100%; height: 85px; display: block; margin-bottom: -3px; position: relative; z-index: 2;
+      filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.4));
+    }
+    .mughal-body {
+      background-color: var(--cream-ivory);
+      background-image: radial-gradient(rgba(139, 101, 8, 0.08) 1px, transparent 1px);
+      background-size: 8px 8px;
+      border-left: 2px solid var(--gold-dark);
+      border-right: 2px solid var(--gold-dark);
+      border-bottom: 2px solid var(--gold-dark);
+      border-radius: 0 0 16px 16px;
+      padding: 5px 20px 25px 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 -10px 20px rgba(212, 175, 55, 0.1);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    /* Inner Golden Border for the body to match the arch stroke */
+    .mughal-body::before {
+      content: ''; position: absolute; top: 0; left: 5px; right: 5px; bottom: 5px;
+      border-left: 1px dashed var(--gold-dark);
+      border-right: 1px dashed var(--gold-dark);
+      border-bottom: 1px dashed var(--gold-dark);
+      border-radius: 0 0 11px 11px; pointer-events: none; opacity: 0.6;
+    }
+
+    /* Page Navigation */
+    .page-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding: 0 10px; width: 100%; }
+    .nav-btn { background: rgba(255,253,249,0.1); border: 1px solid var(--gold-dark); color: var(--gold-light); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+    .nav-btn:hover { background: var(--gold-base); color: #1A0205; transform: translateY(-2px); }
+
+    /* Flip Animations */
+    .flip-out-next { animation: flipOutNext 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    .flip-in-next { animation: flipInNext 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    .flip-out-prev { animation: flipOutPrev 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    .flip-in-prev { animation: flipInPrev 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    @keyframes flipOutNext { from { transform: rotateY(0deg); opacity: 1; } to { transform: rotateY(-90deg); opacity: 0; } }
+    @keyframes flipInNext { from { transform: rotateY(90deg); opacity: 0; } to { transform: rotateY(0deg); opacity: 1; } }
+    @keyframes flipOutPrev { from { transform: rotateY(0deg); opacity: 1; } to { transform: rotateY(90deg); opacity: 0; } }
+    @keyframes flipInPrev { from { transform: rotateY(-90deg); opacity: 0; } to { transform: rotateY(0deg); opacity: 1; } }
+    @keyframes floatingIdle { 0% { transform: translateY(0px); } 100% { transform: translateY(-8px); } }
+
+    /* ================= TYPOGRAPHY & TEXT ================= */
+    .bismillah, .ayah, .dua-arabic {
+      font-family: 'Amiri', serif; direction: rtl; text-align: center;
+      color: var(--gold-deep); 
+      text-shadow: 0px 1px 1px rgba(255, 255, 255, 1), 0px 2px 3px rgba(139, 101, 8, 0.2);
+    }
+    .bismillah { font-size: 32px; font-weight: 700; margin-bottom: 8px; margin-top: -10px; }
+    .ayah, .dua-arabic { font-size: 17px; line-height: 1.8; font-weight: 700; padding: 0 5px; }
+    
+    .urdu-text { font-family: 'Noto Nastaliq Urdu', serif; font-size: 13px; color: var(--text-dark); margin-top: 8px; line-height: 2.2; direction: rtl; text-align: center; font-weight: 700; }
+    
+    .invite-text { font-family: 'Montserrat', sans-serif; font-size: 10px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 3px; margin: 16px 0 12px; font-weight: 700; line-height: 1.6; text-align: center; }
+    .guest-highlight { font-family: 'Cinzel', serif; font-size: 15px; color: var(--gold-deep); letter-spacing: 2px; font-weight: 800; text-transform: capitalize; }
+    
+    .name { font-family: 'Cinzel', serif; font-size: 46px; font-weight: 700; color: var(--gold-deep); letter-spacing: 2px; text-align: center; text-shadow: 0px 1px 1px rgba(255,255,255,1), 0px 3px 6px rgba(139, 101, 8, 0.15); margin: 2px 0; }
+    .parents { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold-dark); font-style: italic; letter-spacing: 1px; font-weight: 700; text-align: center; }
+    .weds { font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--burgundy-light); letter-spacing: 6px; margin: 8px 0; font-weight: 800; text-align: center; }
+
+    /* Dividers & Elements */
+    .event-title { font-family: 'Cinzel', serif; font-size: 24px; color: var(--gold-deep); margin-top: -10px; margin-bottom: 4px; letter-spacing: 2px; font-weight: 700; text-align: center; }
+    .shahi-divider {
+      width: 100%; max-width: 200px; height: 18px; margin: 0 auto 16px auto;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q50,-2 100,5 Q50,12 0,5 Z" fill="%23D4AF37" opacity="0.8"/><circle cx="50" cy="5" r="3" fill="%235A4000"/><circle cx="30" cy="5" r="1.5" fill="%238B6508"/><circle cx="70" cy="5" r="1.5" fill="%238B6508"/></svg>');
+      background-repeat: no-repeat; background-position: center;
+    }
+    
+    .event-block {
+      background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 12px;
+      padding: 18px; margin-bottom: 15px; width: 100%; text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: transform 0.3s ease;
+    }
+    .event-block:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(139, 101, 8, 0.15); }
+    .event-name { font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--gold-dark); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .event-date { font-family: 'Cinzel', serif; font-size: 18px; color: var(--text-dark); font-weight: 700; letter-spacing: 1px; }
+    .event-time { font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--burgundy-light); margin: 4px 0 6px; letter-spacing: 1px; font-weight: 700; }
+    .event-venue { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold-deep); }
+    
+    /* Countdown & Scratch */
+    .countdown-container { display: flex; justify-content: center; gap: 10px; margin: 10px 0 20px; width: 100%; }
+    .cd-box { padding: 10px; border-radius: 8px; min-width: 55px; text-align: center; background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .cd-box span { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--gold-dark); }
+    .cd-box small { display: block; font-family: 'Montserrat', sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); font-weight: 700; margin-top: 2px; }
+
+    .scratch-wrapper {
+      position: relative; width: 100%; max-width: 290px; height: 120px; margin: 0 auto 20px;
+      border-radius: 12px; overflow: hidden; border: 1px solid var(--gold-dark); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .dua-secret { 
+      position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; 
+      background: var(--cream-ivory);
+    }
+    canvas#scratchCanvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
+
+    .actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; }
+    .btn { 
+      background: var(--gold-dark); color: #fff; padding: 12px 18px; border-radius: 25px; 
+      font-size: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 2px; border: none; 
+      transition: all 0.3s ease; cursor: pointer; box-shadow: 0 8px 20px rgba(139, 101, 8, 0.3); text-decoration: none;
+    }
+    .btn:hover { background: var(--gold-deep); transform: translateY(-3px); }
+    .btn.outline { background: transparent; color: var(--gold-deep); border: 1.5px solid var(--gold-dark); }
+    .btn.outline:hover { background: var(--gold-dark); color: #fff; }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(26, 2, 5, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      z-index: 20000; display: flex; justify-content: center; align-items: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 20px;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-card {
+      background: var(--cream-ivory); border: 2px solid var(--gold-base); border-radius: 16px;
+      padding: 30px 25px; width: 100%; max-width: 380px; text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(212,175,55,0.2);
+      transform: translateY(20px) scale(0.95); transition: transform 0.4s ease; position: relative;
+    }
+    .modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+    .modal-close { position: absolute; top: 12px; right: 15px; background: none; border: none; color: var(--gold-deep); font-size: 24px; cursor: pointer; }
+    .modal-title { font-family: 'Cinzel', serif; font-size: 22px; color: var(--gold-deep); letter-spacing: 2px; font-weight: 700; }
+    .modal-subtitle { font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--burgundy-light); font-weight: 700; margin-bottom: 20px; }
+    .option-btn {
+      width: 100%; padding: 14px; border-radius: 10px; background: #fff; border: 1px solid var(--gold-base);
+      color: var(--text-dark); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; margin-bottom: 10px; text-decoration: none;
+    }
+    .option-btn:hover { background: var(--gold-dark); color: #fff; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND LAYER 1 -->
+  <div class="royal-mandala-bg"></div>
+
+  <!-- BACKGROUND LAYER 2 & 3 -->
+  <canvas id="sparkles-canvas"></canvas>
+
+  <audio id="bgMusic" loop preload="auto"><source src="wedding_nasheed.mp3" type="audio/mpeg"></audio>
+  
+  <div id="sound-control" onclick="toggleMute()">🔊</div>
+  <div id="share-control" onclick="shareOnWhatsApp()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.675-.691 1.646 0 .971.708 1.908.807 2.04.099.133 1.393 2.128 3.375 2.984.471.204.839.326 1.127.418.473.151.903.13 1.243.079.38-.058 1.17-.478 1.335-.94.165-.462.165-.857.115-.94-.05-.083-.182-.133-.38-.232z"/></svg>
+  </div>
+
+  <div id="gate-container">
+    <div id="left-door" class="door"></div>
+    <div id="right-door" class="door"></div>
+  </div>
+
+  <div id="seal-btn" onclick="openGate()">
+    <div class="seal-circle"><span class="seal-monogram">M&A</span></div>
+    <div class="seal-text">Tap to Open</div>
+  </div>
+
+  <div class="content-wrapper" id="main-content">
+    <div class="islamic-card" id="tilt-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare="false">
+
+      <!-- ================= PAGE 1 : MUGHAL MEHRAB ================= -->
+      <div class="page active" id="page-1">
+        
+        <!-- MUGHAL SCALLOPED ARCH TOP (SVG) -->
+        <div class="mughal-arch-top">
+          <!-- Highly precise CSS Scalable Mughal Arch -->
+          <svg viewBox="0 0 200 85" width="100%" height="85" preserveAspectRatio="none" style="display:block;">
+            <!-- Inner Dashed Line -->
+            <path d="M 5,85 L 5,55 Q 15,60 25,45 Q 35,55 50,35 Q 65,45 75,25 Q 85,35 100,5 Q 115,35 125,25 Q 135,45 150,35 Q 165,55 175,45 Q 185,60 195,55 L 195,85" fill="none" stroke="#8B6508" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+            <!-- Main Arch Outline -->
+            <path d="M 2,85 L 2,52 Q 15,57 25,42 Q 35,52 50,32 Q 65,42 75,22 Q 85,32 100,2 Q 115,32 125,22 Q 135,42 150,32 Q 165,52 175,42 Q 185,57 198,52 L 198,85 Z" fill="#FFFDF9" stroke="#8B6508" stroke-width="2.5"/>
+          </svg>
+        </div>
+        
+        <!-- MUGHAL BODY -->
+        <div class="mughal-body">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <div class="ayah">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+            <div class="urdu-text">"اور اس کی نشانیوں میں سے ہے کہ اس نے تمہارے لیے تمہاری ہی جنس سے جوڑے بنائے تاکہ تم ان کے پاس سکون حاصل کرو اور اس نے تمہارے درمیان محبت اور رحمت پیدا کر دی۔"</div>
+            
+            <div class="invite-text" id="guest-greeting-container">
+              We Request The Honour Of Your Presence
+            </div>
+            
+            <div class="name">Madiha</div>
+            <div class="parents">D/o Mr. & Mrs. Abdul Basit Shaikh</div>
+            <div class="weds">WEDS</div>
+            <div class="name">Azaan</div>
+            <div class="parents">S/o Mr. & Mrs. Javed Shaikh</div>
+        </div>
+
+        <div class="page-nav" style="justify-content: flex-end;">
+          <button class="nav-btn" onclick="changePage(2)">Next ➔</button>
+        </div>
+      </div>
+
+      <!-- ================= PAGE 2 : EVENTS DETAILS ================= -->
+      <div class="page" id="page-2">
+        <div class="mughal-arch-top">
+          <svg viewBox="0 0 200 85" width="100%" height="85" preserveAspectRatio="none" style="display:block;">
+            <path d="M 5,85 L 5,55 Q 15,60 25,45 Q 35,55 50,35 Q 65,45 75,25 Q 85,35 100,5 Q 115,35 125,25 Q 135,45 150,35 Q 165,55 175,45 Q 185,60 195,55 L 195,85" fill="none" stroke="#8B6508" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+            <path d="M 2,85 L 2,52 Q 15,57 25,42 Q 35,52 50,32 Q 65,42 75,22 Q 85,32 100,2 Q 115,32 125,22 Q 135,42 150,32 Q 165,52 175,42 Q 185,57 198,52 L 198,85 Z" fill="#FFFDF9" stroke="#8B6508" stroke-width="2.5"/>
+          </svg>
+        </div>
+        
+        <div class="mughal-body" style="padding-top: 10px;">
+            <div class="event-title">Wedding Events</div>
+            <div class="shahi-divider"></div>
+            
+            <div class="event-block">
+              <div class="event-name">Rasm-e-Aqd (Nikah)</div>
+              <div class="event-date">12th November, 2026</div>
+              <div class="event-time">Thursday • Asr (5:00 PM)</div>
+              <div class="event-venue">Hamidiya Function Hall</div>
+              <div class="parents" style="font-size:14px; margin-top:2px;">Udgir, Maharashtra</div>
+            </div>
+            
+            <div class="event-block">
+              <div class="event-name">Walima / Dawat</div>
+              <div class="event-date">13th November, 2026</div>
+              <div class="event-time">Friday • Evening 7:00 PM</div>
+              <div class="event-venue">Qadri Function Hall</div>
+              <div class="parents" style="font-size:14px; margin-top:2px;">Jalkot Road, Udgir, Maharashtra</div>
+            </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="nav-btn" onclick="changePage(1)">⬅ Back</button>
+          <button class="nav-btn" onclick="changePage(3)">Next ➔</button>
+        </div>
+      </div>
+
+      <!-- ================= PAGE 3 : DUA & ACTIONS ================= -->
+      <div class="page" id="page-3">
+        <div class="mughal-arch-top">
+          <svg viewBox="0 0 200 85" width="100%" height="85" preserveAspectRatio="none" style="display:block;">
+            <path d="M 5,85 L 5,55 Q 15,60 25,45 Q 35,55 50,35 Q 65,45 75,25 Q 85,35 100,5 Q 115,35 125,25 Q 135,45 150,35 Q 165,55 175,45 Q 185,60 195,55 L 195,85" fill="none" stroke="#8B6508" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+            <path d="M 2,85 L 2,52 Q 15,57 25,42 Q 35,52 50,32 Q 65,42 75,22 Q 85,32 100,2 Q 115,32 125,22 Q 135,42 150,32 Q 165,52 175,42 Q 185,57 198,52 L 198,85 Z" fill="#FFFDF9" stroke="#8B6508" stroke-width="2.5"/>
+          </svg>
+        </div>
+        
+        <div class="mughal-body" style="padding-top: 10px;">
+            <div class="event-title">Save The Date</div>
+            <div class="shahi-divider"></div>
+            
+            <div class="countdown-container">
+              <div class="cd-box"><span id="days">00</span><small>Days</small></div>
+              <div class="cd-box"><span id="hours">00</span><small>Hours</small></div>
+              <div class="cd-box"><span id="mins">00</span><small>Mins</small></div>
+              <div class="cd-box"><span id="secs">00</span><small>Secs</small></div>
+            </div>
+
+            <div class="scratch-wrapper">
+              <div class="dua-secret">
+                  <div class="dua-arabic" style="font-size:16px;">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+                  <div class="urdu-text" style="font-size: 11px; margin-top: 6px; line-height: 1.8;">"اللہ تم دونوں کو برکت دے، اور تم پر برکت نازل کرے، اور تم دونوں کو بھلائی پر جمع کرے۔"</div>
+              </div>
+              <canvas id="scratchCanvas"></canvas>
+            </div>
+
+            <div class="actions">
+              <button onclick="openMapModal()" class="btn">📍 MAP</button>
+              <button onclick="openCalendarModal()" class="btn outline">📅 CALENDAR</button>
+            </div>
+        </div>
+
+        <div class="page-nav" style="justify-content: flex-start;">
+          <button class="nav-btn" onclick="changePage(2)">⬅ Back</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="mapModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeMapModal()">&times;</button>
+      <div class="modal-title">Venue Directions</div>
+      <div class="modal-subtitle">Select an event location</div>
+      <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="option-btn" onclick="closeMapModal()"><span>📍 Nikah: Hamidiya Function Hall</span><span>➔</span></a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Qadri+Function+Hall+Jalkot+Road+Udgir" target="_blank" class="option-btn" onclick="closeMapModal()"><span>📍 Walima: Qadri Function Hall</span><span>➔</span></a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="calendarModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeCalendarModal()">&times;</button>
+      <div class="modal-title">Google Calendar</div>
+      <div class="modal-subtitle">Add event directly to your Calendar</div>
+      <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Madiha+%26+Azaan+-+Rasm-e-Aqd+(Nikah)&dates=20261112T113000Z/20261112T143000Z&details=Nikah+ceremony&location=Hamidiya+Function+Hall,+Udgir" target="_blank" class="option-btn" onclick="closeCalendarModal()"><span>📅 Add Nikah (12th Nov 2026)</span><span>➔</span></a>
+      <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Madiha+%26+Azaan+-+Walima&dates=20261113T133000Z/20261113T173000Z&details=Walima+reception&location=Qadri+Function+Hall,+Udgir" target="_blank" class="option-btn" onclick="closeCalendarModal()"><span>📅 Add Walima (13th Nov 2026)</span><span>➔</span></a>
+    </div>
+  </div>
+
+  <script>
+    function triggerHaptic(duration = 50) { if ('vibrate' in navigator) { try { navigator.vibrate(duration); } catch(e){} } }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestName = urlParams.get('guest');
+      if (guestName) {
+        document.getElementById('guest-greeting-container').innerHTML = `Dear <span class="guest-highlight">${decodeURIComponent(guestName.trim())}</span>,<br>We Request The Honour Of Your Presence`;
+      }
+    });
+
+    let isMuted = false;
+    const music = document.getElementById('bgMusic');
+    const soundBtn = document.getElementById('sound-control');
+
+    function playAudioFadeIn() {
+      if(!music) return;
+      music.volume = 0;
+      let playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          soundBtn.style.display = 'flex';
+          let vol = 0; let fade = setInterval(() => {
+            if (vol < 0.45) { vol += 0.05; music.volume = vol; } else clearInterval(fade);
+          }, 180);
+        }).catch(e => console.log("Audio waiting"));
+      }
+    }
+
+    function toggleMute() {
+      triggerHaptic(30);
+      if(isMuted) { music.volume = 0.45; soundBtn.innerText = '🔊'; isMuted = false; } 
+      else { music.volume = 0; soundBtn.innerText = '🔇'; isMuted = true; }
+    }
+
+    let isOpened = false;
+    function openGate() {
+      if(isOpened) return; isOpened = true; triggerHaptic([50, 30, 50]); playAudioFadeIn();
+      document.getElementById('main-content').style.display = 'block';
+      const seal = document.getElementById('seal-btn');
+      seal.style.transform = 'translate(-50%, -50%) scale(2)'; seal.style.opacity = '0';
+      document.getElementById('left-door').classList.add('open-left');
+      document.getElementById('right-door').classList.add('open-right');
+      setTimeout(() => { seal.style.display = 'none'; document.getElementById('gate-container').style.display = 'none'; startCountdown(); }, 2200);
+    }
+
+    let currentPage = 1;
+    function changePage(pageNum) {
+      if (pageNum === currentPage) return; triggerHaptic(35);
+      const isNext = pageNum > currentPage;
+      const outgoing = document.getElementById('page-' + currentPage); const incoming = document.getElementById('page-' + pageNum);
+      document.querySelectorAll('.page').forEach(p => { p.classList.remove('active', 'flip-out-next', 'flip-in-next', 'flip-out-prev', 'flip-in-prev'); });
+      outgoing.classList.add(isNext ? 'flip-out-next' : 'flip-out-prev');
+      incoming.classList.add(isNext ? 'flip-in-next' : 'flip-in-prev');
+      currentPage = pageNum;
+      if (pageNum === 3) setTimeout(setupScratchCard, 800);
+    }
+
+    /* ================= DUAL LAYER CANVAS: GOLD DUST + SLOW MOTION ROSE PETALS ================= */
+    const pCanvas = document.getElementById('sparkles-canvas');
+    const pCtx = pCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    class Atmospherics {
+      constructor() { this.reset(); this.y = Math.random() * pCanvas.height; }
+      reset() {
+        this.x = Math.random() * pCanvas.width;
+        this.y = -20;
+        this.type = Math.random() > 0.65 ? 'petal' : 'dust';
+        
+        if (this.type === 'dust') {
+          this.radius = Math.random() * 1.5 + 0.5;
+          this.speedY = Math.random() * -0.4 - 0.1; // Dust floats UP
+          this.speedX = Math.random() * 0.4 - 0.2;
+          this.alpha = Math.random() * 0.8 + 0.2;
+        } else {
+          this.radiusX = Math.random() * 6 + 4; // Petal Width
+          this.radiusY = Math.random() * 10 + 6; // Petal Length
+          this.speedY = Math.random() * 0.8 + 0.3; // Petal falls DOWN slow
+          this.speedX = Math.random() * 0.6 - 0.3;
+          this.alpha = Math.random() * 0.7 + 0.3;
+          this.rotation = Math.random() * Math.PI * 2;
+          this.rotSpeed = Math.random() * 0.04 - 0.02;
+        }
+      }
+      update() {
+        this.x += this.speedX; this.y += this.speedY;
+        if (this.type === 'petal') {
+          this.rotation += this.rotSpeed;
+          this.x += Math.sin(this.rotation) * 0.5; // Natural drift
+          if (this.y > pCanvas.height + 20) this.reset();
+        } else {
+          if (this.y < -20 || this.x < -20 || this.x > pCanvas.width + 20) { this.reset(); this.y = pCanvas.height + 20; }
+        }
+      }
+      draw() {
+        pCtx.save();
+        pCtx.globalAlpha = this.alpha;
+        if (this.type === 'dust') {
+          pCtx.beginPath(); pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          pCtx.fillStyle = '#D4AF37'; pCtx.shadowBlur = 8; pCtx.shadowColor = '#FFF5D1'; pCtx.fill();
+        } else {
+          pCtx.translate(this.x, this.y); pCtx.rotate(this.rotation);
+          pCtx.beginPath(); pCtx.ellipse(0, 0, this.radiusX, this.radiusY, 0, 0, Math.PI * 2);
+          pCtx.fillStyle = '#5C0A18'; /* Deep Burgundy Rose Petal */
+          pCtx.shadowBlur = 4; pCtx.shadowColor = 'rgba(0,0,0,0.4)';
+          pCtx.fill();
+        }
+        pCtx.restore();
+      }
+    }
+
+    for (let i = 0; i < 40; i++) particles.push(new Atmospherics());
+    function animateCanvas() { pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateCanvas); }
+    animateCanvas();
+
+    function startCountdown() {
+      const weddingDate = new Date("2026-11-12T17:00:00+05:30").getTime();
+      const timer = setInterval(() => {
+        const distance = weddingDate - new Date().getTime();
+        if (distance > 0) {
+          document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+          document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+          document.getElementById("mins").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+          document.getElementById("secs").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        } else { clearInterval(timer); document.querySelector('.countdown-container').innerHTML = '<div class="cd-box" style="width:100%"><span>Alhamdulillah</span><small>Today is the day!</small></div>'; }
+      }, 1000);
+    }
+
+    let scratchInit = false;
+    function setupScratchCard() {
+      if(scratchInit) return; const canvas = document.getElementById('scratchCanvas'); if (!canvas) return;
+      const ctx = canvas.getContext('2d'), rect = canvas.parentElement.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr; canvas.style.width = `${rect.width}px`; canvas.style.height = `${rect.height}px`; ctx.scale(dpr, dpr);
+      let g = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+      g.addColorStop(0, '#D4AF37'); g.addColorStop(0.5, '#FFF5D1'); g.addColorStop(1, '#8B6508');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, rect.width, rect.height);
+      ctx.fillStyle = '#2A040A'; ctx.font = '700 12px Montserrat'; ctx.textAlign = 'center'; ctx.fillText('✨ SCRATCH FOR SPECIAL DUA ✨', rect.width/2, rect.height/2 + 4);
+      let isDrag = false, lastX=0, lastY=0, cleared=0; const total = rect.width * rect.height;
+      function getPos(e) { const b = canvas.getBoundingClientRect(), t = e.touches ? e.touches[0] : e; return { x: t.clientX - b.left, y: t.clientY - b.top }; }
+      function sStart(e) { isDrag = true; const p = getPos(e); lastX = p.x; lastY = p.y; triggerHaptic(15); }
+      function sEnd() { isDrag = false; if (cleared > total * 0.4) { canvas.style.transition = "opacity 0.8s"; canvas.style.opacity = "0"; setTimeout(() => canvas.style.display = "none", 800); } }
+      function sMove(e) {
+        if (!isDrag) return; e.preventDefault(); const p = getPos(e);
+        ctx.globalCompositeOperation = 'destination-out'; ctx.lineJoin = ctx.lineCap = "round"; ctx.lineWidth = 35;
+        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(p.x, p.y); ctx.stroke(); lastX = p.x; lastY = p.y; cleared += 150;
+      }
+      canvas.addEventListener('mousedown', sStart); canvas.addEventListener('touchstart', sStart, {passive:false});
+      window.addEventListener('mouseup', sEnd); window.addEventListener('touchend', sEnd);
+      canvas.addEventListener('mousemove', sMove); canvas.addEventListener('touchmove', sMove, {passive:false});
+      scratchInit = true;
+    }
+
+    function openMapModal() { triggerHaptic(30); document.getElementById('mapModal').classList.add('active'); }
+    function closeMapModal() { triggerHaptic(20); document.getElementById('mapModal').classList.remove('active'); }
+    function openCalendarModal() { triggerHaptic(30); document.getElementById('calendarModal').classList.add('active'); }
+    function closeCalendarModal() { triggerHaptic(20); document.getElementById('calendarModal').classList.remove('active'); }
+    function shareOnWhatsApp() { triggerHaptic(30); window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('You are cordially invited to the wedding of Madiha & Azaan. View invitation: ' + window.location.href)}`, '_blank'); }
+  </script>
+</body>
+</html>
